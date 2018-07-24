@@ -1,5 +1,22 @@
+/*Style Override*/
 .react-tinymce-0_ifr{
 	border : 0px;
+}
+
+/*Editor Style*/
+.editor-wrapper{
+    display: inline-block;
+    width: calc(100% - 300px);
+    float: left;
+}
+.editor-wrapper.hide{
+    display: none;
+}
+.editor-wrapper.showOnMobile{
+    display: block !important;
+    position: absolute;
+    background: #fff;
+    height: 100vh;
 }
 .editor-wrapper .header{
 	overflow: auto;
@@ -25,4 +42,23 @@
 }
 .mce-content-body{
     padding: 10px;
+}
+.go-back{
+    display: inline-block;
+    margin-left: 20px;
+    top: 6px;
+    position: relative;
+    color: #3e71db;
+    cursor: pointer;
+
+}
+.go-back .txt{
+    margin-left: 4px;
+}
+
+
+@media only screen and (max-width: 780px){
+    .editor-wrapper{
+        width: 100%;
+    }   
 }

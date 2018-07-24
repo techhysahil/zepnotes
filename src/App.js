@@ -11,6 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
       currentNoteData : "",
+      currentNoteDataAsText : "",
       showNote : false,
       currentDirectoryId : null,
       currentNotesId : null
@@ -18,11 +19,13 @@ class App extends Component {
 
     this.updateNoteContent = this.updateNoteContent.bind(this);
     this.showNoteContent = this.showNoteContent.bind(this);
+    this.updateShowNote = this.updateShowNote.bind(this);
   }
 
-  updateNoteContent(content){
+  updateNoteContent(content,text){
     this.setState({
-      currentNoteData : content
+      currentNoteData : content,
+      currentNoteDataAsText : text
     })
   }
 
@@ -32,6 +35,12 @@ class App extends Component {
       currentNoteData : content
     })
   }
+
+  updateShowNote(){
+    this.setState({
+      showNote : false
+    })
+  }
   
   render() {
     return (
@@ -39,11 +48,13 @@ class App extends Component {
         <FolderComponent 
           currentNoteData={this.state.currentNoteData}
           showNoteContent={this.showNoteContent}
+          currentNoteDataAsText={this.state.currentNoteDataAsText}
         />
         <TextEditor 
           updateNoteContent={this.updateNoteContent}
           showNote={this.state.showNote}
           currentNoteData={this.state.currentNoteData}
+          updateShowNote={this.updateShowNote}
         />
       </div>
     );

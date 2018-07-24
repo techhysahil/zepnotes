@@ -39,6 +39,7 @@ class FolderComponent extends Component {
 					directory.notes.forEach((note) => {
 						if(note.id === this.state.activeNoteId){
 							note.subtitle = nextProps.currentNoteData;
+							note.text = nextProps.currentNoteDataAsText
 						}
 						directoryCopy.notes.push(note)
 					});

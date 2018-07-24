@@ -26,7 +26,8 @@ class NotesComponent extends Component {
 		let noteObj = {
      			id : uniqueId().randomUUID(6),
      			title : "Note Title",
-     			subtitle : "Add content here ..."
+     			subtitle : "Add content here ...",
+     			text : "Add content here ..."
      		}
 		this.props.addNote(this.props.activeDirectoryId, noteObj)
 	}
@@ -93,7 +94,7 @@ class NotesComponent extends Component {
 									this.showNoteContent(note.subtitle,note.id,this.props.activeDirectoryId)
 								}}>
 								<div className="title">{note.title}</div>
-								<div className="subtitle">{note.subtitle}</div>
+								<div className="subtitle">{note.text}</div>
 							</div>
 						)
 					})	

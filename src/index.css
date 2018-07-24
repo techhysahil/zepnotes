@@ -4,10 +4,3 @@ body {
   font-family: OpenSans;
 }
 
-.editor-wrapper{
-	display: inline-block;
-	width: calc(100% - 300px);
-	float: left;
-}
-.show-note-data{
-}
