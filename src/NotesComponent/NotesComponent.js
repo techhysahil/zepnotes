@@ -10,6 +10,7 @@ class NotesComponent extends Component {
 	    }
 	    this.goBack = this.goBack.bind(this);
 	    this.addNotes = this.addNotes.bind(this);
+	    this.removeNote = this.removeNote.bind(this);
 	    this.searchNotes = this.searchNotes.bind(this);
 	    this.showNoteContent = this.showNoteContent.bind(this);
 	}
@@ -30,6 +31,11 @@ class NotesComponent extends Component {
      			text : "Add content here ..."
      		}
 		this.props.addNote(this.props.activeDirectoryId, noteObj)
+	}
+
+	removeNote(e, noteId){
+		e.stopPropagation();
+		this.props.removeNote(noteId);
 	}
 
 	goBack(){
@@ -95,6 +101,7 @@ class NotesComponent extends Component {
 								}}>
 								<div className="title">{note.title}</div>
 								<div className="subtitle">{note.text}</div>
+								<i class="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
 							</div>
 						)
 					})	

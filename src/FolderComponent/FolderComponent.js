@@ -23,12 +23,13 @@ class FolderComponent extends Component {
 	    this.disableEditdirectory=this.disableEditdirectory.bind(this);
 	    this.addNewDirectory = this.addNewDirectory.bind(this);
 	    this.showNoteContent = this.showNoteContent.bind(this);
+	    this.removeNote = this.removeNote.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
-	    let directoryCopy = JSON.parse(JSON.stringify(this.state.directories));
+	    let directoriesCopy = JSON.parse(JSON.stringify(this.state.directories));
 	    if(nextProps.currentNoteData){
-	    	directoryCopy = directoryCopy.map((directory) => {
+	    	directoriesCopy = directoriesCopy.map((directory) => {
 	    		let directoryCopy = {
 	    			id : directory.id,
 					name : directory.name,
@@ -43,12 +44,14 @@ class FolderComponent extends Component {
 						}
 						directoryCopy.notes.push(note)
 					});
+				}else{
+					directoryCopy.notes = directory.notes;
 				}
 				return directoryCopy;
 			})
 	    }
 		this.setState({
-			directories : directoryCopy
+			directories : directoriesCopy
 		})
 	}
 
@@ -58,6 +61,7 @@ class FolderComponent extends Component {
 		},() => {
 			this.props.showNoteContent(content,noteid,directid)
 		})
+		
 	}
 
 	updateDirectoryName(e,directoryId){
@@ -126,6 +130,21 @@ class FolderComponent extends Component {
 		directoryCopy.map((directory) => {
 			if(directory.id === directoyId){
 				directory.notes.unshift(noteObj)
+			}
+			return directory;
+		})
+		this.setState({
+			directories : directoryCopy
+		})
+	}
+
+	removeNote(noteId){
+		let directoryCopy = JSON.parse(JSON.stringify(this.state.directories));
+		directoryCopy = directoryCopy.map((directory) => {
+			if(directory.id === this.state.activeDirectoryId){
+				directory.notes = directory.notes.filter((note) => {
+					return note.id !== noteId
+				})
 			}
 			return directory;
 		})
@@ -214,6 +233,7 @@ class FolderComponent extends Component {
 							activeDirectoryId={this.state.activeDirectoryId}
 							openDirectyList={this.openDirectoryList}
 							addNote={this.addNote}
+							removeNote={this.removeNote}
 							showNoteContent={this.showNoteContent}
 						/>
 				}

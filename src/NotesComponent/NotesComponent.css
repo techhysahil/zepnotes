@@ -59,6 +59,7 @@
 	height: 80px;
     padding: 8px 20px;
     cursor: pointer;
+    position: relative;
 }
 .notes-wrapper .notes:hover{
 	background-color: #efefef;
@@ -75,3 +76,18 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.notes-wrapper .fa-trash-o{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    padding: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+.notes-wrapper .fa-trash-o:hover{
+    color: #666;
+}
+
+
