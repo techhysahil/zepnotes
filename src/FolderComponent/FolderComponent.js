@@ -164,11 +164,8 @@ class FolderComponent extends Component {
 		let searchStr = this.state.searchTxt && this.state.searchTxt.toLowerCase();
 
 		if(searchStr){
-			directories = this.state.directories.filter((directory) => {
-				if(directory.name && directory.name.toLowerCase().indexOf(searchStr) > -1){
-					return directory;
-				}
-			})
+			directories = this.state.directories
+							.filter(directory => directory.name && directory.name.toLowerCase().indexOf(searchStr) > -1)
 		}else{
 			directories = this.state.directories
 		}

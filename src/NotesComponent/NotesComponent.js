@@ -64,11 +64,8 @@ class NotesComponent extends Component {
 		
 
 		if(searchStr){
-			notes = activeDirectory[0].notes.filter((notes) => {
-				if(notes.title && notes.title.toLowerCase().indexOf(searchStr) > -1){
-					return notes;
-				}
-			})
+			notes = activeDirectory[0].notes
+						.filter(notes => notes.title && notes.title.toLowerCase().indexOf(searchStr) > -1)
 		}else{
 			notes = activeDirectory.length>0 ? activeDirectory[0].notes :[]
 		}
@@ -101,7 +98,7 @@ class NotesComponent extends Component {
 								}}>
 								<div className="title">{note.title}</div>
 								<div className="subtitle">{note.text}</div>
-								<i class="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
+								<i className="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
 							</div>
 						)
 					})	
