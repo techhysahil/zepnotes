@@ -1,0 +1,28 @@
+.react-tinymce-0_ifr{
+	border : 0px;
+}
+.editor-wrapper .header{
+	overflow: auto;
+    height: 34px;
+    box-sizing: border-box;
+    border-bottom: solid 1px #dedede;
+}
+.editor-wrapper .header .edit,.editor-wrapper .header .done{
+	float: right;
+    color: #3e71db;
+    line-height: 34px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+.no-data{
+	margin-top: 100px;
+	text-align: center;
+	color: #999;
+}
+.show-note-data{
+    padding: 20px;
+    color: #666;
+}
+.mce-content-body{
+    padding: 10px;
+}

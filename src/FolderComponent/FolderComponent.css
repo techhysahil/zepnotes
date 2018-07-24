@@ -1,0 +1,121 @@
+.directory-wrapper{
+	display: inline-block;
+    width: 300px;
+    border-right: solid 1px #dedede;
+    box-sizing: border-box;
+    float: left;
+    height: 100vh;
+}
+
+.directory-wrapper .no-item{
+    text-align: center;
+    color: #999;
+    margin-top: 100px;
+}
+
+/*Top Controls*/
+.directory-wrapper .control-wrapper{
+	padding: 8px 20px;
+	position: relative;
+	border-bottom: solid 1px #dedede;
+}
+.directory-wrapper .directory-container{
+    display: inline-block;
+    height: calc(100vh - 77px);
+    width: 100%;
+    overflow: auto;
+}
+.directory-wrapper .control-wrapper .setting{
+	color: #376ada;
+}
+.directory-wrapper .control-wrapper .search{
+	color: #3e71db;
+    position: absolute;
+    left: 45px;
+    top: 0px;
+}
+.directory-wrapper .control-wrapper .search input{
+	width: 205px;
+    height: 30px;
+    border: 0px;
+    font-size: 14px;
+    color: #3e5371;
+    overflow: hidden;
+    padding-right: 35px;
+    box-sizing: border-box;
+}
+.directory-wrapper .control-wrapper .search input:focus{
+	outline: 0px;
+}
+.directory-wrapper .control-wrapper .search .fa-search{
+	position: absolute;
+    top: 9px;
+    right: 15px;
+    font-size: 14px;
+}
+.directory-wrapper .control-wrapper .add-item{
+	color: #3e71db;
+	float: right;
+	cursor: pointer;
+}
+/*Edit Control*/
+.edit-wrapper{
+	padding: 8px 20px;
+	position: relative;
+	font-family: OpenSans;
+	margin-bottom: 10px;
+}
+.edit-wrapper .txt{
+	color: #abb3c2;
+}
+.edit-wrapper .edit, .edit-wrapper .done{
+	float: right;
+	cursor: pointer;
+    color: #1974dd;
+    
+}
+
+/*Diretory Style*/
+.directory-wrapper .directory{
+	margin-bottom: 5px;
+    height: 30px;
+    padding: 4px 20px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.directory-wrapper .directory .edit-directory{
+    height: 35px;
+    width: 200px;
+    padding: 2px 8px;
+    top: -2px;
+    position: relative;
+    border: 1px solid #efefef;
+    box-sizing: border-box;{}
+}
+.directory-wrapper .directory .edit-directory:focus{
+	outline: 0px;
+}
+.directory-wrapper .directory:hover{
+	background-color: #efefef;
+}
+.directory-wrapper .directory .left-icon{
+	margin-right: 10px;
+}
+.directory-wrapper .directory .directory-name{
+	color: #75879b;
+    font-size: 16px;
+    font-weight: bold;
+    overflow: hidden;
+    width: 210px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.directory-wrapper .directory .fa-angle-right{
+	float: right;
+    color: #d8d8d8;
+    font-size: 22px;
+    top: 3px;
+    position: relative;
+}

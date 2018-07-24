@@ -1,0 +1,77 @@
+.notes-wrapper{
+	display: inline-block;
+	width: 300px;	
+}
+
+/*Top wrapper*/
+.notes-wrapper .control-wrapper{
+    padding: 8px 20px;
+    position: relative;
+    border-bottom: solid 1px #dedede;
+    border-right: solid 1px #dedede;
+    overflow: auto;
+}
+.notes-wrapper .control-wrapper .search{
+    color: #3e71db;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+}
+.notes-wrapper .control-wrapper .search input{
+    width: 240px;
+    height: 30px;
+    border: 0px;
+    font-size: 14px;
+    color: #3e5371;
+    overflow: hidden;
+    padding-right: 35px;
+    box-sizing: border-box;
+}
+.notes-wrapper .control-wrapper .search input:focus{
+    outline: 0px;
+}
+.notes-wrapper .control-wrapper .search .fa-search{
+    position: absolute;
+    top: 8px;
+    right: 15px;
+}
+.notes-wrapper .control-wrapper .add-item{
+    color: #3e71db;
+    float: right;
+    cursor: pointer;
+}
+
+/*Back Control*/
+.back-wrapper{
+    padding: 8px 20px;
+    position: relative;
+    font-family: OpenSans;
+    margin-bottom: 10px;
+    color: #abb3c2;
+    cursor: pointer;
+}
+.back-wrapper .txt{
+    margin-left: 10px;
+}
+
+/*Diretory Style*/
+.notes-wrapper .notes{
+	height: 80px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+.notes-wrapper .notes:hover{
+	background-color: #efefef;
+}
+.notes-wrapper .notes .title{
+	font-size: 18px;
+    color: #666;
+    margin-bottom: 5px;
+}
+.notes-wrapper .notes .subtitle{
+	font-size: 14px;
+    color: #999;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
