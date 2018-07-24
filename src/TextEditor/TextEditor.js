@@ -5,14 +5,9 @@ import $ from 'jquery';
 window.$ = $;
 // Require Editor JS files.
 import 'froala-editor/js/froala_editor.pkgd.min.js';
-
 // Require Editor CSS files.
 import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
-
-// Require Font Awesome.
-import 'font-awesome/css/font-awesome.css';
-
 import FroalaEditor from 'react-froala-wysiwyg';
 
 import './TextEditor.css';
@@ -22,7 +17,6 @@ class TextEditor extends Component {
 	constructor(props) {
 		super(props)
 	    this.state={
-	    	editNoteContent : false,
 	    	content: this.props.currentNoteData || ""
 	    }
 	    
@@ -41,15 +35,11 @@ class TextEditor extends Component {
 	}
 
 	enableEditing(){
-		this.setState({
-			editNoteContent : true
-		})		
+		this.props.enableEditing()
 	}
 
 	disableEditing(){
-		this.setState({
-			editNoteContent : false
-		})		
+		this.props.disableEditing()
 	}
 
 	
@@ -83,14 +73,14 @@ class TextEditor extends Component {
 							)
 					}
 					{
-						this.state.editNoteContent ? 
-							(<span className="done" onClick={this.disableEditing}>Done</span>):
+						this.props.editNoteContent ? 
+							(<span className="done" onClick={this.disableEditing}>Publish</span>):
 							(<span className="edit" onClick={this.enableEditing}>Edit</span>)
 					}
 					</React.Fragment>
 				</div>
 				{
-					this.state.editNoteContent ? 
+					this.props.editNoteContent ? 
 			            (<FroalaEditor 
 			            	tag='textarea'
 			            	model={this.props.currentNoteData}

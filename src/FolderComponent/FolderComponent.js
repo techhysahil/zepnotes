@@ -135,6 +135,8 @@ class FolderComponent extends Component {
 		})
 		this.setState({
 			directories : directoryCopy
+		},() => {
+			this.props.enableEditing();
 		})
 	}
 

@@ -14,12 +14,15 @@ class App extends Component {
       currentNoteDataAsText : "",
       showNote : false,
       currentDirectoryId : null,
-      currentNotesId : null
+      currentNotesId : null,
+      editNoteContent : true
     }
 
     this.updateNoteContent = this.updateNoteContent.bind(this);
     this.showNoteContent = this.showNoteContent.bind(this);
     this.updateShowNote = this.updateShowNote.bind(this);
+    this.enableEditing = this.enableEditing.bind(this);
+    this.disableEditing = this.disableEditing.bind(this);
   }
 
   updateNoteContent(content,text){
@@ -36,6 +39,18 @@ class App extends Component {
     })
   }
 
+  enableEditing(){
+    this.setState({
+      editNoteContent : true
+    })
+  }
+
+  disableEditing(){
+    this.setState({
+      editNoteContent : false
+    })
+  }
+
   updateShowNote(){
     this.setState({
       showNote : false
@@ -49,12 +64,16 @@ class App extends Component {
           currentNoteData={this.state.currentNoteData}
           showNoteContent={this.showNoteContent}
           currentNoteDataAsText={this.state.currentNoteDataAsText}
+          enableEditing={this.enableEditing}
         />
         <TextEditor 
           updateNoteContent={this.updateNoteContent}
           showNote={this.state.showNote}
           currentNoteData={this.state.currentNoteData}
           updateShowNote={this.updateShowNote}
+          editNoteContent={this.state.editNoteContent}
+          enableEditing={this.enableEditing}
+          disableEditing={this.disableEditing}
         />
       </div>
     );
