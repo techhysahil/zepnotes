@@ -5,12 +5,21 @@
     box-sizing: border-box;
     float: left;
     height: 100vh;
+    position: relative;
 }
 
 .directory-wrapper .no-item{
-    text-align: center;
     color: #999;
-    margin-top: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    text-align: center;
+    line-height: 23px;
+}
+.directory-wrapper .no-item .fa{
+    font-size: 12px;
 }
 
 /*Top Controls*/

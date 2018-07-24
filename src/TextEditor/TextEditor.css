@@ -3,6 +3,8 @@
     display: inline-block;
     width: calc(100% - 300px);
     float: left;
+    height: 100vh;
+    position: relative;
 }
 .editor-wrapper.hide{
     display: none;
@@ -26,11 +28,21 @@
     cursor: pointer;
     margin-right: 30px;
 }
-.no-data{
-	margin-top: 100px;
-	text-align: center;
-	color: #999;
+
+.editor-wrapper .no-data{
+    color: #999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    text-align: center;
+    line-height: 23px;
 }
+.directory-wrapper .no-item .fa{
+    font-size: 12px;
+}
+
 .show-note-data{
     padding: 20px;
     color: #666;
@@ -51,6 +63,13 @@
 }
 .go-back .txt{
     margin-left: 4px;
+}
+
+.fr-element::first-line{
+    font-size: 30px;
+    margin-bottom: 20px;
+    display: inline-block;
+    color: #3e71db;
 }
 
 

@@ -232,7 +232,10 @@ class FolderComponent extends Component {
 												</div>
 											)
 										})	
-									) : (<div className="no-item">No Directories...</div>)
+									) : (<div className="no-item">
+											No Directories Available<br />
+											Click on <i className="fa fa-plus"></i> to add new Directory
+										</div>)
 								}
 							</div>
 						</div>

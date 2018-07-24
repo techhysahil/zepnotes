@@ -54,7 +54,7 @@ class TextEditor extends Component {
 		// User has not selected any Note
 		if(!this.props.showNote){
 			return (<div className={"editor-wrapper"+(isMobile ? " hide" : "")}>
-				<div className="no-data">Click on notes to view content...</div>
+				<div className="no-data">Select Note to View Content...</div>
 			</div>)
 			
 		}
