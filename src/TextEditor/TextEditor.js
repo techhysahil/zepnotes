@@ -1,7 +1,21 @@
+/* eslint-disable import/first */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import TinyMCE from 'react-tinymce';
+import $ from 'jquery';
+window.$ = $;
+// Require Editor JS files.
+import 'froala-editor/js/froala_editor.pkgd.min.js';
 
+// Require Editor CSS files.
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+
+// Require Font Awesome.
+import 'font-awesome/css/font-awesome.css';
+
+import FroalaEditor from 'react-froala-wysiwyg';
+
+import './TextEditor.css';
 import './TextEditor.css';
 
 class TextEditor extends Component {
@@ -17,9 +31,9 @@ class TextEditor extends Component {
     	this.disableEditing = this.disableEditing.bind(this);
     	this.showNoteList = this.showNoteList.bind(this);
 	}
-	handleEditorChange(e) {
+	handleEditorChange(model) {
 		var domNode = ReactDOM.findDOMNode(this);
-		this.props.updateNoteContent(e.target.getContent(),domNode.innerText);
+		this.props.updateNoteContent(model,domNode.innerText);
 	}
 
 	showNoteList(){
@@ -77,17 +91,11 @@ class TextEditor extends Component {
 				</div>
 				{
 					this.state.editNoteContent ? 
-			            (<TinyMCE
-			              content={this.props.currentNoteData}
-			              config={{
-			                plugins: 'autolink link image lists print preview',
-	                		toolbar: 'undo redo | bold italic | alignleft aligncenter alignright| image |',
-			                statusbar: false,
-			                menubar : false,
-			                inline:true
-			              }}
-			              onChange={this.handleEditorChange}
-			            />):
+			            (<FroalaEditor 
+			            	tag='textarea'
+			            	model={this.props.currentNoteData}
+			            	onModelChange={this.handleEditorChange}
+			              />):
 			            (
 			            	<div className="show-note-data">
 			            		{

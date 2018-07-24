@@ -1,8 +1,3 @@
-/*Style Override*/
-.react-tinymce-0_ifr{
-	border : 0px;
-}
-
 /*Editor Style*/
 .editor-wrapper{
     display: inline-block;
@@ -39,9 +34,6 @@
 .show-note-data{
     padding: 20px;
     color: #666;
-}
-.mce-content-body{
-    padding: 10px;
 }
 .go-back{
     display: inline-block;
