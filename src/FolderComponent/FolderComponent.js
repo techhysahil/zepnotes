@@ -55,8 +55,9 @@ class FolderComponent extends Component {
 	showNoteContent(content,noteid,directid){
 		this.setState({
 			activeNoteId : noteid
+		},() => {
+			this.props.showNoteContent(content,noteid,directid)
 		})
-		this.props.showNoteContent(content,noteid,directid)
 	}
 
 	updateDirectoryName(e,directoryId){
