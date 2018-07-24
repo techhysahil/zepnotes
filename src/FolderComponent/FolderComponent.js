@@ -33,11 +33,11 @@ class FolderComponent extends Component {
 	    			id : directory.id,
 					name : directory.name,
 					imgName : directory.imgName,
-					timestamp : Date.now(),
+					timestamp : directory.timestamp,
 					notes : []
 	    		};
 				if(directory.id === this.state.activeDirectoryId){
-
+					directoryCopy.timestamp = Date.now();
 					directory.notes.forEach((note) => {
 						if(note.id === this.state.activeNoteId){
 							note.subtitle = nextProps.currentNoteData;
