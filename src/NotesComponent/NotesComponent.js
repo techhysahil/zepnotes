@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import './NotesComponent.css';
-import {uniqueId} from './../utils/helper';
+import { uniqueId, SortArrayOfObj } from './../utils/helper';
 
 class NotesComponent extends Component {
 	constructor(props) {
@@ -28,7 +28,7 @@ class NotesComponent extends Component {
 		let noteObj = {
      			id : uniqueId().randomUUID(6),
      			title : "Note Title",
-     			timestamp : new Date(),
+     			timestamp : Date.now(),
      			subtitle : "",
      			text : ""
      		}
@@ -50,7 +50,7 @@ class NotesComponent extends Component {
 		})
 	}
 
-	searchedNotes(){
+	processNotes(){
 		let activeDirectory =[];
 		let notes = [];
 		let searchStr = this.state.searchTxt && this.state.searchTxt.toLowerCase();
@@ -71,6 +71,8 @@ class NotesComponent extends Component {
 		}else{
 			notes = activeDirectory.length>0 ? activeDirectory[0].notes :[]
 		}
+
+		notes = SortArrayOfObj(notes,"timestamp");
 
 		return notes;
 	}
@@ -93,7 +95,7 @@ class NotesComponent extends Component {
 					<span className="txt">Back</span>
 				</div>
 				{
-					this.searchedNotes().map((note,index) => {
+					this.processNotes().map((note,index) => {
 						return(
 							<div key={note.id} className="notes" onClick={() => {
 									this.showNoteContent(note.subtitle,note.id,this.props.activeDirectoryId,note.timestamp)

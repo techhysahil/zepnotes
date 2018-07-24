@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NotesComponent from './../NotesComponent';
-import {uniqueId} from './../utils/helper';
+import { uniqueId, SortArrayOfObj } from './../utils/helper';
 import './FolderComponent.css';
 
 class FolderComponent extends Component {
@@ -27,20 +27,22 @@ class FolderComponent extends Component {
 
 	componentWillReceiveProps(nextProps) {
 	    let directoriesCopy = JSON.parse(JSON.stringify(this.state.directories));
-	    if(nextProps.currentNoteData){
+	    if(nextProps.currentNoteData && this.state.activeDirectoryId && this.state.activeNoteId){
 	    	directoriesCopy = directoriesCopy.map((directory) => {
 	    		let directoryCopy = {
 	    			id : directory.id,
 					name : directory.name,
 					imgName : directory.imgName,
-					timestamp : directory.timestamp,
+					timestamp : Date.now(),
 					notes : []
 	    		};
 				if(directory.id === this.state.activeDirectoryId){
+
 					directory.notes.forEach((note) => {
 						if(note.id === this.state.activeNoteId){
 							note.subtitle = nextProps.currentNoteData;
 							note.text = nextProps.currentNoteDataAsText
+							note.timestamp = Date.now()
 						}
 						directoryCopy.notes.push(note)
 					});
@@ -49,6 +51,10 @@ class FolderComponent extends Component {
 				}
 				return directoryCopy;
 			})
+
+			// Update Current Directory TimeStamp
+
+			// Update Current Note TimeStamp
 	    }
 		this.setState({
 			directories : directoriesCopy
@@ -85,7 +91,7 @@ class FolderComponent extends Component {
 				id : uniqueId().randomUUID(6),
 				name : "defaultName",
 				imgName : "fa-rocket",
-				timestamp : new Date(),
+				timestamp : Date.now(),
 				notes : []
 		})
 		this.setState({
@@ -162,7 +168,7 @@ class FolderComponent extends Component {
 		})
 	}
 
-	searchedDirectories(){
+	processDirectories(){
 		let directories = [];
 		let searchStr = this.state.searchTxt && this.state.searchTxt.toLowerCase();
 
@@ -172,6 +178,8 @@ class FolderComponent extends Component {
 		}else{
 			directories = this.state.directories
 		}
+
+		directories = SortArrayOfObj(directories,"timestamp");
 
 		return directories;
 	}
@@ -211,7 +219,7 @@ class FolderComponent extends Component {
 							<div className="directory-container">
 								{
 									
-									this.state.directories.length>0 ? (this.searchedDirectories().map((directory,index) => {
+									this.state.directories.length>0 ? (this.processDirectories().map((directory,index) => {
 											return(
 												<div key={directory.id} className="directory" onClick={() => this.openNotes(directory)}>
 													<i className={"left-icon fa "+ directory.imgName }></i>
