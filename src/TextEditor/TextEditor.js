@@ -1,6 +1,7 @@
 /* eslint-disable import/first */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Moment from 'react-moment';
 import $ from 'jquery';
 window.$ = $;
 // Require Editor JS files.
@@ -88,6 +89,9 @@ class TextEditor extends Component {
 			              />):
 			            (
 			            	<div className="show-note-data">
+			            		<span className="timestamp">
+									<Moment format="YYYY-MM-DD HH:mm">{this.props.currentNoteTimestamp}</Moment>
+								</span>
 			            		{
 			            			<div dangerouslySetInnerHTML={{ __html: this.props.currentNoteData }} />
 			            		}

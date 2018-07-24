@@ -35,6 +35,11 @@
     padding: 20px;
     color: #666;
 }
+.show-note-data .timestamp{
+     display: block;
+    text-align: center;
+    font-size: 14px;
+}
 .go-back{
     display: inline-block;
     margin-left: 20px;

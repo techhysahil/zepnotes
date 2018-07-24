@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Moment from 'react-moment';
 import './NotesComponent.css';
 import {uniqueId} from './../utils/helper';
 
@@ -19,16 +20,17 @@ class NotesComponent extends Component {
 
 	componentWillReceiveProps(nextProps){}
 
-	showNoteContent(content,noteid,directid){
-		this.props.showNoteContent(content,noteid,directid)
+	showNoteContent(content,noteid,directid,timestamp){
+		this.props.showNoteContent(content,noteid,directid,timestamp)
 	}
 
 	addNotes(){
 		let noteObj = {
      			id : uniqueId().randomUUID(6),
      			title : "Note Title",
-     			subtitle : "Add content here ...",
-     			text : "Add content here ..."
+     			timestamp : new Date(),
+     			subtitle : "",
+     			text : ""
      		}
 		this.props.addNote(this.props.activeDirectoryId, noteObj)
 	}
@@ -94,10 +96,13 @@ class NotesComponent extends Component {
 					this.searchedNotes().map((note,index) => {
 						return(
 							<div key={note.id} className="notes" onClick={() => {
-									this.showNoteContent(note.subtitle,note.id,this.props.activeDirectoryId)
+									this.showNoteContent(note.subtitle,note.id,this.props.activeDirectoryId,note.timestamp)
 								}}>
 								<div className="title">{note.title}</div>
 								<div className="subtitle">{note.text}</div>
+								<span className="timestamp">
+									<Moment fromNow>{note.timestamp}</Moment>
+								</span>
 								<i className="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
 							</div>
 						)

@@ -15,7 +15,8 @@ class App extends Component {
       showNote : false,
       currentDirectoryId : null,
       currentNotesId : null,
-      editNoteContent : true
+      editNoteContent : true,
+      currentNoteTimestamp : null
     }
 
     this.updateNoteContent = this.updateNoteContent.bind(this);
@@ -32,10 +33,11 @@ class App extends Component {
     })
   }
 
-  showNoteContent(content,noteId,directoryId){
+  showNoteContent(content,noteId,directoryId,timestamp){
     this.setState({
       showNote : true,
-      currentNoteData : content
+      currentNoteData : content,
+      currentNoteTimestamp : timestamp
     })
   }
 
@@ -74,6 +76,7 @@ class App extends Component {
           editNoteContent={this.state.editNoteContent}
           enableEditing={this.enableEditing}
           disableEditing={this.disableEditing}
+          currentNoteTimestamp={this.state.currentNoteTimestamp}
         />
       </div>
     );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import NotesComponent from './../NotesComponent';
 import {uniqueId} from './../utils/helper';
-
 import './FolderComponent.css';
 
 class FolderComponent extends Component {
@@ -34,6 +33,7 @@ class FolderComponent extends Component {
 	    			id : directory.id,
 					name : directory.name,
 					imgName : directory.imgName,
+					timestamp : directory.timestamp,
 					notes : []
 	    		};
 				if(directory.id === this.state.activeDirectoryId){
@@ -55,11 +55,11 @@ class FolderComponent extends Component {
 		})
 	}
 
-	showNoteContent(content,noteid,directid){
+	showNoteContent(content,noteid,directid,timestamp){
 		this.setState({
 			activeNoteId : noteid
 		},() => {
-			this.props.showNoteContent(content,noteid,directid)
+			this.props.showNoteContent(content,noteid,directid,timestamp)
 		})
 		
 	}
@@ -85,6 +85,7 @@ class FolderComponent extends Component {
 				id : uniqueId().randomUUID(6),
 				name : "defaultName",
 				imgName : "fa-rocket",
+				timestamp : new Date(),
 				notes : []
 		})
 		this.setState({
