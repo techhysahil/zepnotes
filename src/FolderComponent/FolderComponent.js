@@ -48,7 +48,7 @@ class FolderComponent extends Component {
 					directoryCopy.timestamp = Date.now();
 					directory.notes.forEach((note) => {
 						if(note.id === this.state.activeNoteId){
-							note.title = title	 || "Untitled";
+							note.title = title.substring(0,100)	 || "Untitled";
 							note.subtitle = nextProps.currentNoteDataAsText ? nextProps.currentNoteDataAsText.replace(title, "").substring(0,100) : "Add syour text...";
 							note.text = nextProps.currentNoteData;
 							note.timestamp = Date.now()

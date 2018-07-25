@@ -73,6 +73,10 @@
 	font-size: 18px;
     color: #666;
     margin-bottom: 5px;
+    white-space: nowrap;
+    width: calc(100% - 115px);
+    text-overflow: ellipsis;
+    overflow: auto;
 }
 .notes-wrapper .notes .subtitle{
 	font-size: 14px;
