@@ -95,7 +95,7 @@ class NotesComponent extends Component {
 					<span className="txt">Back</span>
 				</div>
 				{
-					this.processNotes().map((note,index) => {
+					this.processNotes().length > 0 ? this.processNotes().map((note,index) => {
 						return(
 							<div key={note.id} className="notes" onClick={() => {
 									this.showNoteContent(note.subtitle,note.id,this.props.activeDirectoryId,note.timestamp)
@@ -108,7 +108,10 @@ class NotesComponent extends Component {
 								<i className="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
 							</div>
 						)
-					})	
+					})	: (<div className="no-item">
+						No Notes Available<br />
+						Click on <i className="fa fa-plus"></i> to add new Notes
+					</div>)
 				}
 			</div>
 		)

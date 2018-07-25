@@ -72,6 +72,20 @@
     color: #3e71db;
 }
 
+/*style Overide*/
+.fr-toolbar{
+    border : 0px;
+}
+.fr-wrapper{
+    box-shadow: none !important;
+    border-bottom : solid 1px #dedede !important;
+    height: calc(100vh - 110px) !important;
+}
+.fr-toolbar{
+    box-shadow: none !important;
+    border-bottom : solid 1px #dedede !important;
+}
+
 
 @media only screen and (max-width: 780px){
     .editor-wrapper{
