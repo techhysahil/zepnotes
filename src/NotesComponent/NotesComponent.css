@@ -41,6 +41,11 @@
     cursor: pointer;
 }
 
+.notes-ontainer{
+    overflow: auto;
+    height: calc(100vh - 79px);
+}
+
 /*Back Control*/
 .back-wrapper{
     padding: 8px 20px;

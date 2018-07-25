@@ -28,9 +28,9 @@ class FolderComponent extends Component {
 	componentWillReceiveProps(nextProps) {
 	    let directoriesCopy = JSON.parse(JSON.stringify(this.state.directories));
 	    if(nextProps.currentNoteData && this.state.activeDirectoryId && this.state.activeNoteId){
-	    	var result = nextProps.currentNoteData.match(/<p>(.*?)<\/p>/g).map(function(val){
+	    	var result = nextProps.currentNoteData.match(/<p>(.*?)<\/p>/g) ? nextProps.currentNoteData.match(/<p>(.*?)<\/p>/g).map(function(val){
 			   return val.replace(/<\/?p>/g,'');
-			});
+			}) : [];
 	    	directoriesCopy = directoriesCopy.map((directory) => {
 	    		let directoryCopy = {
 	    			id : directory.id,
@@ -43,9 +43,9 @@ class FolderComponent extends Component {
 					directoryCopy.timestamp = Date.now();
 					directory.notes.forEach((note) => {
 						if(note.id === this.state.activeNoteId){
-							note.title = result[0];
-							note.subtitle = nextProps.currentNoteData;
-							note.text = nextProps.currentNoteDataAsText.replace(result[0], "")
+							note.title = result[0] || "Untitled";
+							note.subtitle = nextProps.currentNoteDataAsText ? nextProps.currentNoteDataAsText.replace(result[0], "") : "Add syour text...";
+							note.text = nextProps.currentNoteData;
 							note.timestamp = Date.now()
 						}
 						directoryCopy.notes.push(note)
@@ -56,13 +56,11 @@ class FolderComponent extends Component {
 				return directoryCopy;
 			})
 
-			// Update Current Directory TimeStamp
-
-			// Update Current Note TimeStamp
+			this.setState({
+				directories : directoriesCopy
+			})
 	    }
-		this.setState({
-			directories : directoriesCopy
-		})
+		
 	}
 
 	showNoteContent(content,noteid,directid,timestamp){

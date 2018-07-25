@@ -27,9 +27,9 @@ class NotesComponent extends Component {
 	addNotes(){
 		let noteObj = {
      			id : uniqueId().randomUUID(6),
-     			title : "",
+     			title : "Untitled",
      			timestamp : Date.now(),
-     			subtitle : "",
+     			subtitle : "Add syour text...",
      			text : ""
      		}
 		this.props.addNote(this.props.activeDirectoryId, noteObj)
@@ -95,23 +95,27 @@ class NotesComponent extends Component {
 					<span className="txt">Back</span>
 				</div>
 				{
-					this.processNotes().length > 0 ? this.processNotes().map((note,index) => {
-						return(
-							<div key={note.id} className="notes" onClick={() => {
-									this.showNoteContent(note.subtitle,note.id,this.props.activeDirectoryId,note.timestamp)
-								}}>
-								<div className="title">{note.title}</div>
-								<div className="subtitle">{note.text}</div>
-								<span className="timestamp">
-									<Moment fromNow>{note.timestamp}</Moment>
-								</span>
-								<i className="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
-							</div>
-						)
-					})	: (<div className="no-item">
-						No Notes Available<br />
-						Click on <i className="fa fa-plus"></i> to add new Notes
-					</div>)
+					<div className="notes-ontainer">
+						{
+							this.processNotes().length > 0 ? this.processNotes().map((note,index) => {
+								return(
+									<div key={note.id} className="notes" onClick={() => {
+											this.showNoteContent(note.text ? note.text : "<p>"+note.title+"</p><p>"+note.subtitle+"</p>",note.id,this.props.activeDirectoryId,note.timestamp)
+										}}>
+										<div className="title">{note.title}</div>
+										<div className="subtitle">{note.subtitle}</div>
+										<span className="timestamp">
+											<Moment fromNow>{note.timestamp}</Moment>
+										</span>
+										<i className="fa fa-trash-o" onClick={(e) => this.removeNote(e,note.id)}></i>
+									</div>
+								)
+							})	: (<div className="no-item">
+								No Notes Available<br />
+								Click on <i className="fa fa-plus"></i> to add new Notes
+							</div>)
+						}
+					</div>
 				}
 			</div>
 		)

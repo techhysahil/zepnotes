@@ -46,6 +46,9 @@
 .show-note-data{
     padding: 20px;
     color: #666;
+    height: calc(100% - 34px);
+    overflow: auto;
+    box-sizing: border-box;
 }
 .show-note-data .timestamp{
      display: block;
@@ -85,7 +88,10 @@
     box-shadow: none !important;
     border-bottom : solid 1px #dedede !important;
 }
-
+.fr-box{
+    height: calc(100% - 35px);
+    overflow: auto;
+}
 
 @media only screen and (max-width: 780px){
     .editor-wrapper{
