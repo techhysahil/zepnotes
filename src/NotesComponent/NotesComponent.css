@@ -74,7 +74,7 @@
     color: #999;
     height: 50px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    width: 80%;
 }
 .notes-wrapper .notes .timestamp{
     position: absolute;

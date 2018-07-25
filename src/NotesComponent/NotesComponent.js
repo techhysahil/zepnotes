@@ -27,7 +27,7 @@ class NotesComponent extends Component {
 	addNotes(){
 		let noteObj = {
      			id : uniqueId().randomUUID(6),
-     			title : "Note Title",
+     			title : "",
      			timestamp : Date.now(),
      			subtitle : "",
      			text : ""

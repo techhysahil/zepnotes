@@ -27,8 +27,8 @@ class TextEditor extends Component {
     	this.showNoteList = this.showNoteList.bind(this);
 	}
 	handleEditorChange(model) {
-		var domNode = ReactDOM.findDOMNode(this);
-		this.props.updateNoteContent(model,domNode.innerText);
+		var domNode = document.getElementsByClassName('fr-wrapper');
+		this.props.updateNoteContent(model,domNode[0].innerText);
 	}
 
 	showNoteList(){
