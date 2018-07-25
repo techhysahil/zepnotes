@@ -29,7 +29,7 @@ class NotesComponent extends Component {
      			id : uniqueId().randomUUID(6),
      			title : "Untitled",
      			timestamp : Date.now(),
-     			subtitle : "Add syour text...",
+     			subtitle : "Add your text...",
      			text : ""
      		}
 		this.props.addNote(this.props.activeDirectoryId, noteObj)

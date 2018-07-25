@@ -1,6 +1,11 @@
+
 import React, { Component } from 'react'
 import NotesComponent from './../NotesComponent';
 import { uniqueId, SortArrayOfObj } from './../utils/helper';
+/* eslint-disable import/first */
+import $ from 'jquery';
+window.$ = $;
+
 import './FolderComponent.css';
 
 class FolderComponent extends Component {
@@ -27,10 +32,10 @@ class FolderComponent extends Component {
 
 	componentWillReceiveProps(nextProps) {
 	    let directoriesCopy = JSON.parse(JSON.stringify(this.state.directories));
+	    var getafirstnode = $(nextProps.currentNoteData) && $(nextProps.currentNoteData).length > 0 && $(nextProps.currentNoteData)[0];
+
 	    if(nextProps.currentNoteData && this.state.activeDirectoryId && this.state.activeNoteId){
-	    	var result = nextProps.currentNoteData.match(/<p>(.*?)<\/p>/g) ? nextProps.currentNoteData.match(/<p>(.*?)<\/p>/g).map(function(val){
-			   return val.replace(/<\/?p>/g,'');
-			}) : [];
+	    	var title = getafirstnode ? getafirstnode.innerText : [];
 	    	directoriesCopy = directoriesCopy.map((directory) => {
 	    		let directoryCopy = {
 	    			id : directory.id,
@@ -43,8 +48,8 @@ class FolderComponent extends Component {
 					directoryCopy.timestamp = Date.now();
 					directory.notes.forEach((note) => {
 						if(note.id === this.state.activeNoteId){
-							note.title = result[0] || "Untitled";
-							note.subtitle = nextProps.currentNoteDataAsText ? nextProps.currentNoteDataAsText.replace(result[0], "") : "Add syour text...";
+							note.title = title	 || "Untitled";
+							note.subtitle = nextProps.currentNoteDataAsText ? nextProps.currentNoteDataAsText.replace(title, "").substring(0,100) : "Add syour text...";
 							note.text = nextProps.currentNoteData;
 							note.timestamp = Date.now()
 						}
